@@ -1,16 +1,12 @@
 
-module "resource_group" {
 
-  source = "../../Modules/resource_group"
+resource "azurerm_resource_group" "rg" {
+    for_each = var.rg_dev
+  name     = each.value.name
 
-  rg_dev = var.rg_dev
+  location = each.value.location
+  
+  managed_by = each.value.managed_by
 }
 
-module "storage_account" {
 
-  source = "../../Modules/Storage_account"
-
-  st_dev = var.st_dev
-
-  depends_on = [module.resource_group]
-}
