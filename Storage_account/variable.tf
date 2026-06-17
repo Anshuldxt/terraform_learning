@@ -1,3 +1,0 @@
-variable "st_dev" {
-  
-}
